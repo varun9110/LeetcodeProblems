@@ -160,3 +160,27 @@ var longestSubsequence = function(s, k) {
     
     return maxLength
 };
+
+
+//Greedy method, Also read this one
+
+var longestSubsequence = function (s, k) {
+    let val = 0;
+    let pow = 0;
+    let countOnes = 0;
+    let i = s.length - 1;
+  
+    while (i >= 0) {
+      if (s[i] === '1') {
+        const newVal = Math.pow(2, pow) + val;
+        if (newVal > k) break;
+  
+        val = newVal;
+        countOnes++;
+      }
+      i--;
+      pow++;
+    }
+  
+    return s.split('').filter((el) => el === '0').length + countOnes;
+  };
