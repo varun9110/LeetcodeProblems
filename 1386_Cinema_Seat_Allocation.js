@@ -96,7 +96,7 @@ var maxNumberOfFamilies = function(n, reservedSeats) {
             case2 = false;
         }
 
-        //case3: if above cases are false then check the middle row condition
+        //case3: if above cases are false then check the middle column condition
         if(!case1 && !case2){
             if(!reservedRowSeats.includes(4) && !reservedRowSeats.includes(5) && !reservedRowSeats.includes(6) &&      !reservedRowSeats.includes(7)) {
                 maxFourGroupAvailable++;
