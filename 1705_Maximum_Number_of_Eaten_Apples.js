@@ -36,19 +36,36 @@ days[i] = 0 if and only if apples[i] = 0.
 
 */
 
-var eatenApples = function(A, D) {
-    let time = new Array(40001), ans = 0, last = A.length
-    for (let i = 0, j = Infinity; i <= last; i++) {
-        if (j < i) j = i
-        if (A[i]) {
-            let exp = i + D[i] - 1
-            if (time[exp]) time[exp] += A[i]
-            else time[exp] = A[i]
-            if (exp < j) j = exp
-            if (exp > last) last = exp
+var eatenApples = function(apples, days) {
+    let pq = new MinPriorityQueue({ compare: (b, a) => b[0] - a[0] }),
+        eatenApples = 0;
+
+        
+
+    for (let i = 0; i < apples.length; i++) {
+        if (i < apples.length)
+            pq.enqueue([i + days[i] - 1, apples[i]]);
+
+        while (!pq.isEmpty() && pq.front()[0] < i)
+            pq.dequeue();
+
+        let front = pq.dequeue();
+
+        if (front) {
+            if (--front[1])
+                pq.enqueue([front[0], front[1]]);
+            eatenApples++;
         }
-        while (!time[j] && j < last) j++
-        if (time[j]) ans++, time[j]--
     }
-    return ans
+
+    pq = pq.toArray();
+    let totalDaysCovered = apples.length - 1;
+
+    for (let i = 0; i < pq.length; i++) {
+        const eatableApples = Math.min(pq[i][0] - totalDaysCovered, pq[i][1]);
+        totalDaysCovered += eatableApples;
+        eatenApples += eatableApples;
+    }
+    
+    return eatenApples;
 };
