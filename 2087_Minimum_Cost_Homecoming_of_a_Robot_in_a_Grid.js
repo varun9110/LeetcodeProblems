@@ -64,7 +64,7 @@ var minCost = function(startPos, homePos, rowCosts, colCosts) {
             result +=colCosts[i+1];
             i++;
         }
-    } else if(startPos[0] === homePos[0] && startPos[1] > homePos[1]){
+    } else if(startPos[1] > homePos[1]){
         let i=startPos[1];
         while(i>homePos[1]){
             result +=colCosts[i-1];
@@ -90,7 +90,6 @@ var minCost = function(startPos, homePos, rowCosts, colCosts) {
     return result;
 
 };
-
 
 
 //Advanced approach, we just find the difference to be added between the rows and column iterator and keep iterating
