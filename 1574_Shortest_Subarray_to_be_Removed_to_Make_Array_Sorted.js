@@ -30,7 +30,7 @@ Constraints:
 
 /*
 Approach: First check from left to right when the left+1 is greater than left. if no one then array is in ascending order and return 0.
-if not then check the ascending sequnce from right to left, that is right should be greater than right -1
+if not then check the ascending sequence from right to left, that is right should be greater than right -1
 
 this way the number between left and right needs to be removed (lets call this as "shortestRemoval" ) but there could be that array[left] > array[right]
 
