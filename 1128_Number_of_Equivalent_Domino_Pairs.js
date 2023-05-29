@@ -41,9 +41,11 @@ var numEquivDominoPairs = function(dominoes) {
     let result = 0;
     for(let j=0; j<objectKeys.length; j++){
         let count = objectKeys[j];
-        for(let k=0; k<count; k++){
-            result += k;
-        }
+        // for(let k=0; k<count; k++){
+        //     result += k;
+        // }
+        //little refinement, the possible combinations can be found using the below formula:
+        result = result + (count*(count-1))/2;
     }
     return result;
 };
