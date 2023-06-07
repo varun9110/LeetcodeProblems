@@ -25,7 +25,7 @@ const gcdOfStrings = (str1, str2) => {
 
 
 
-var gcdOfStrings = function(str1, str2) {
+var gcdOfStrings1 = function(str1, str2) {
     const [smallerString, largerString] = [str1, str2].sort((a,b) => a.length - b.length);
     for (let i = smallerString.length; i > 0; i--) {
         const testString = smallerString.slice(0, i);
