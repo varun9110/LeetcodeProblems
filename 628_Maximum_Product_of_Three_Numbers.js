@@ -1,6 +1,5 @@
 /**
  * 628. Maximum Product of Three Numbers
- * 628. Maximum Product of Three Numbers
 Easy
 3.8K
 622
