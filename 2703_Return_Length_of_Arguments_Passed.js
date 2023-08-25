@@ -1,5 +1,7 @@
 /**
  * 2703. Return Length of Arguments Passed
+ * Difficulty : Easy
+ * 
  * Write a function argumentsLength that returns the count of arguments passed to it.
  * Example 1:
 Input: argsArr = [5]

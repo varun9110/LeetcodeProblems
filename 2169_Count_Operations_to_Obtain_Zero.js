@@ -1,5 +1,7 @@
 /**
  * 2169. Count Operations to Obtain Zero
+ * Difficulty : Easy
+ * 
  * You are given two non-negative integers num1 and num2.
 In one operation, if num1 >= num2, you must subtract num2 from num1, otherwise subtract num1 from num2.
 For example, if num1 = 5 and num2 = 4, subtract num2 from num1, thus obtaining num1 = 1 and num2 = 4. 

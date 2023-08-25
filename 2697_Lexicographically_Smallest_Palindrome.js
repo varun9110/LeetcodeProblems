@@ -1,5 +1,7 @@
 /**
  * 2697. Lexicographically Smallest Palindrome
+ * Difficulty : Easy
+ * 
  * You are given a string s consisting of lowercase English letters, and you are allowed to perform operations on it. 
  * In one operation, you can replace a character in s with another lowercase English letter.
 Your task is to make s a palindrome with the minimum number of operations possible. If there are multiple palindromes that can be made using the 

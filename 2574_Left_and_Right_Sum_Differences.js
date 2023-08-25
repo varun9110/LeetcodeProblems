@@ -1,5 +1,7 @@
 /**
  * 2574. Left and Right Sum Differences
+ * Difficulty : Easy
+ * 
  * Given a 0-indexed integer array nums, find a 0-indexed integer array answer where:
 answer.length == nums.length.
 answer[i] = |leftSum[i] - rightSum[i]|.

@@ -1,6 +1,7 @@
 /**
  * 628. Maximum Product of Three Numbers
-Easy
+Difficulty : Easy
+
 3.8K
 622
 Companies

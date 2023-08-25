@@ -1,5 +1,7 @@
 /**
  * 2138. Divide a String Into Groups of Size k
+ * Difficulty : Easy
+ * 
  * A string s can be partitioned into groups of size k using the following procedure:
 
 The first group consists of the first k characters of the string, the second group consists of the next k characters of the string, and so on. 

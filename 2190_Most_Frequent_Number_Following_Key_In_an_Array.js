@@ -1,5 +1,7 @@
 /**
  * 2190. Most Frequent Number Following Key In an Array
+ * Difficulty : Easy
+ * 
  * You are given a 0-indexed integer array nums. You are also given an integer key, which is present in nums.
 
 For every unique integer target in nums, count the number of times target immediately follows an occurrence of key in nums. 

@@ -1,5 +1,7 @@
 /**
  * 2570. Merge Two 2D Arrays by Summing Values
+ * Difficulty : Easy
+ * 
  * You are given two 2D integer arrays nums1 and nums2.
 
 nums1[i] = [idi, vali] indicate that the number with the id idi has a value equal to vali.

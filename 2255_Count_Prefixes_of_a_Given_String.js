@@ -1,5 +1,7 @@
 /**
  * 2255. Count Prefixes of a Given String
+ * Difficulty : Easy
+ * 
  * You are given a string array words and a string s, where words[i] and s comprise only of lowercase English letters.
 
 Return the number of strings in words that are a prefix of s.
