@@ -48,7 +48,7 @@ var digitCount = function(num) {
  * refined approach
  */
 
-function digitCount(num: string): boolean {
+function digitCount(num){
     const arr = Array(num.length).fill(0);
     for (const char of num) {
         arr[Number(char)]++;
