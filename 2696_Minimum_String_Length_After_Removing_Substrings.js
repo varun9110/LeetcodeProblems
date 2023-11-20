@@ -44,18 +44,15 @@ var minLength = function(s) {
 
 
 var minLength = function(s) {
-    
-    
-    
-        while( s.includes("AB") || s.includes("CD"))
-            {
-                if(s.includes("AB"))
-                s = s.replace("AB","")
+    while( s.includes("AB") || s.includes("CD"))
+        {
+            if(s.includes("AB"))
+            s = s.replace("AB","")
 
-                if(s.includes("CD"))
-                s = s.replace("CD", '')
-            }
+            if(s.includes("CD"))
+            s = s.replace("CD", '')
+        }
 
-        return s.length;
+    return s.length;
     
 };
