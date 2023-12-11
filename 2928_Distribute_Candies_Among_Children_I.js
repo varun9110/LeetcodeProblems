@@ -22,9 +22,9 @@ Constraints:
 
 var distributeCandies = function(n, limit) {
     let cc = 0
-  for (let i = 0; i <= lim; i++) {
-    for (let j = 0; j <= lim; j++) {
-      for (let k = 0; k <= lim; k++) {
+  for (let i = 0; i <= limit; i++) {
+    for (let j = 0; j <= limit; j++) {
+      for (let k = 0; k <= limit; k++) {
         if (i + j + k === n) {
           cc++
         }
