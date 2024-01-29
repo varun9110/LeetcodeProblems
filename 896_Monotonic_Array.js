@@ -41,3 +41,30 @@ var isMonotonic = function(nums) {
 
     return true;
 };
+
+
+/**
+ * Refined code
+ */
+
+var isMonotonic = function(nums) {
+    let countIncreasing=0
+    let countDecreasing=0
+    for(let i=0;i<nums.length-1;i++)
+    {
+        if(nums[i]<=nums[i+1])
+        {
+            countIncreasing++;
+        }
+        if(nums[i]>=nums[i+1])
+        {
+            countDecreasing++;
+            }
+        
+    }
+    if(countIncreasing===nums.length-1||countDecreasing===nums.length-1)
+    {
+        return true
+    }
+    else return false
+};
