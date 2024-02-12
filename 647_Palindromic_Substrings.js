@@ -81,3 +81,26 @@ var countSubstrings = function(s) {
 
     return ans;
 };
+
+let countSubstrings = function(s) {
+    let resLen = 0
+
+    let countPalidrome=function(l,r){
+        let res=0
+        while (l>=0 && r<s.length && s[l]==s[r]){
+            res++
+            l--
+            r++
+        }
+    
+        return res
+    }
+
+    for (let i=0;i<s.length; i++){
+        //handle odd length
+        resLen+=countPalidrome(i,i)
+        //handle even length
+        resLen+=countPalidrome(i,i+1)
+    }
+    return resLen
+};
