@@ -162,6 +162,7 @@ Revisit:
 1110
 1530
 1605
+2392
 
 /**
 Code to find all the subsets of an array:
