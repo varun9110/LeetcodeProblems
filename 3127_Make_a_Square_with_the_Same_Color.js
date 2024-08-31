@@ -46,3 +46,46 @@ var canMakeSquare = function(grid) {
         return false;
 };
 
+
+/**
+ * @param {character[][]} grid
+ * @return {boolean}
+ */
+var canMakeSquare = function(grid) {
+    for (let i = 0; i < grid.length-1; i++){
+        for (let j = 0; j < grid[0].length-1; j++){
+            let whiteColorCount = 0
+            let blackColorCount = 0
+            
+            /*
+             This is my diagram of square
+             
+             a b
+             c d
+             
+            */
+
+            let a = grid[i][j]
+            let b = grid[i][j+1]
+            let c = grid[i+1][j]
+            let d = grid[i+1][j+1]
+            
+            if (a === 'W') whiteColorCount++
+            if (a === 'B') blackColorCount++
+            
+            if (b === 'W') whiteColorCount++
+            if (b === 'B') blackColorCount++
+            
+            if (c === 'W') whiteColorCount++
+            if (c === 'B') blackColorCount++
+            
+            if (d === 'W') whiteColorCount++
+            if (d === 'B') blackColorCount++
+            
+            if (whiteColorCount > 2) return true
+            if (blackColorCount > 2) return true
+        }
+    }
+    
+    return false
+}
