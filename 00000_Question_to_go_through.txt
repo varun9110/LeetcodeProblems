@@ -195,6 +195,7 @@ Revisit:
 874
 2028
 3217
+1367
 
 /**
 Code to find all the subsets of an array:
