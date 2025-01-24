@@ -319,6 +319,7 @@ Revisit:
 2017
 1765
 1267
+802
 
 /**
 Code to find all the subsets of an array:
