@@ -332,6 +332,7 @@ Revisit:
 684
 2493
 827
+3142
 
 /**
 Code to find all the subsets of an array:
