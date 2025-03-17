@@ -1,5 +1,5 @@
 /**
- * 206. Divide Array Into Equal Pairs
+ * 2206. Divide Array Into Equal Pairs
  * Difficulty: Easy
  * 
  * You are given an integer array nums consisting of 2 * n integers.
