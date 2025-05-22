@@ -66,31 +66,25 @@ O(n)
  * @param {number[][]} queries
  * @return {number}
  */
-var maxRemoval = function(nums, queries) {
-    queries.sort((a,b)=>a[0]-b[0]);
-    let pq = new MaxPriorityQueue({compare:(a,b)=>b[1]-a[1]});
-    let prefixArray = new Array(nums.length+1).fill(0);
-    let i=0, j=0;
-    
-    while(i<nums.length){
-        if(i>0)
-            prefixArray[i]+=prefixArray[i-1];
-        
-        while(j<queries.length && queries[j][0]<=i){
-            pq.enqueue(queries[j]);
+var maxRemoval = function (nums, queries) {
+    queries.sort((a, b) => a[0] - b[0]);
+    const heap = new MaxPriorityQueue();
+    const deltaArray = new Array(nums.length + 1).fill(0);
+    let operations = 0;
+
+    for (let i = 0, j = 0; i < nums.length; i++) {
+        operations += deltaArray[i];
+        while (j < queries.length && queries[j][0] === i) {
+            heap.push(queries[j][1]);
             j++;
         }
-        
-        while(!pq.isEmpty() && nums[i]+prefixArray[i]>0 && pq.front()[1]>=i){
-            let [start, end] = pq.dequeue();
-            prefixArray[i]--;
-            prefixArray[end+1]++;
+        while (operations < nums[i] && !heap.isEmpty() && heap.front() >= i) {
+            operations += 1;
+            deltaArray[heap.pop() + 1] -= 1;
         }
-        
-        if(nums[i]+prefixArray[i]>0)
+        if (operations < nums[i]) {
             return -1;
-        i++;
+        }
     }
-    
-    return pq.size();
+    return heap.size();
 };
