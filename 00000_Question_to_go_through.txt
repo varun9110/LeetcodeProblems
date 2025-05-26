@@ -394,6 +394,7 @@ Revisit:
 3362
 496
 2131
+1857
 
 /**
 Code to find all the subsets of an array:
