@@ -89,7 +89,6 @@ var judgePoint24 = function(cards) {
 
         const a = nums[i], b = nums[j];
 
-       =
         const candidates = [];
         candidates.push(a + b);        // + 
         candidates.push(a - b);        // -
