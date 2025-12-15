@@ -1,0 +1,91 @@
+/**
+ * 2110. Number of Smooth Descent Periods of a Stock
+ * Difficulty: Medium
+ * 
+ * You are given an integer array prices representing the daily price history of a stock, where prices[i] is the stock price on the ith day.
+
+A smooth descent period of a stock consists of one or more contiguous days such that the price on each day is lower than the price on the preceding day by exactly 1. The first day of the period is exempted from this rule.
+
+Return the number of smooth descent periods.
+
+ 
+
+Example 1:
+
+Input: prices = [3,2,1,4]
+Output: 7
+Explanation: There are 7 smooth descent periods:
+[3], [2], [1], [4], [3,2], [2,1], and [3,2,1]
+Note that a period with one day is a smooth descent period by the definition.
+Example 2:
+
+Input: prices = [8,6,7,7]
+Output: 4
+Explanation: There are 4 smooth descent periods: [8], [6], [7], and [7]
+Note that [8,6] is not a smooth descent period as 8 - 6 ≠ 1.
+Example 3:
+
+Input: prices = [1]
+Output: 1
+Explanation: There is 1 smooth descent period: [1]
+ 
+
+Constraints:
+
+1 <= prices.length <= 105
+1 <= prices[i] <= 105
+ */
+
+/**
+ * Intuition
+We are counting how many continuous decreasing-by-1 sequences exist in the prices.
+If today’s price continues the decreasing streak (previous − current = 1), you extend the streak.
+Every time the streak grows, it creates new valid subarrays, so you add the streak length to the answer.
+
+Approach
+Initialize two counters:
+
+ans = 1 (every element alone is a valid descent period)
+
+streak = 1 (current decreasing-by-1 chain)
+
+Loop from i = 1 to end:
+
+If prices[i-1] - prices[i] === 1, the decreasing streak continues → increment streak.
+
+Otherwise, the streak is broken → reset streak = 1.
+
+Add streak to total:
+
+Every time the streak grows, it creates new descent subarrays, so do ans += streak.
+
+Return ans when loop finishes.
+(summarized by chatgpt)
+
+Complexity
+Time complexity:
+O(N)
+
+Space complexity:
+O(1)
+ */
+
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+var getDescentPeriods = function (prices) {
+    let ans = 1;
+    let streaks = 1;
+    for (let i = 1; i < prices.length; i++) {
+        if (prices[i - 1] - prices[i] === 1) {
+            streaks++;
+        } else {
+            streaks = 1;
+        }
+
+        ans += streaks;
+    }
+
+    return ans;
+};
