@@ -1,0 +1,122 @@
+/**
+ * 3640. Trionic Array II
+ * Difficulty: Hard
+ * 
+ * You are given an integer array nums of length n.
+
+A trionic subarray is a contiguous subarray nums[l...r] (with 0 <= l < r < n) for which there exist indices l < p < q < r such that:
+
+nums[l...p] is strictly increasing,
+nums[p...q] is strictly decreasing,
+nums[q...r] is strictly increasing.
+Return the maximum sum of any trionic subarray in nums.
+
+ 
+
+Example 1:
+
+Input: nums = [0,-2,-1,-3,0,2,-1]
+
+Output: -4
+
+Explanation:
+
+Pick l = 1, p = 2, q = 3, r = 5:
+
+nums[l...p] = nums[1...2] = [-2, -1] is strictly increasing (-2 < -1).
+nums[p...q] = nums[2...3] = [-1, -3] is strictly decreasing (-1 > -3)
+nums[q...r] = nums[3...5] = [-3, 0, 2] is strictly increasing (-3 < 0 < 2).
+Sum = (-2) + (-1) + (-3) + 0 + 2 = -4.
+Example 2:
+
+Input: nums = [1,4,2,7]
+
+Output: 14
+
+Explanation:
+
+Pick l = 0, p = 1, q = 2, r = 3:
+
+nums[l...p] = nums[0...1] = [1, 4] is strictly increasing (1 < 4).
+nums[p...q] = nums[1...2] = [4, 2] is strictly decreasing (4 > 2).
+nums[q...r] = nums[2...3] = [2, 7] is strictly increasing (2 < 7).
+Sum = 1 + 4 + 2 + 7 = 14.
+ 
+
+Constraints:
+
+4 <= n = nums.length <= 105
+-109 <= nums[i] <= 109
+It is guaranteed that at least one trionic subarray exists.
+ */
+
+
+/**
+ * Intuition
+The goal is to find a contiguous subarray that follows a specific zigzag pattern: Strictly Increasing → Strictly Decreasing → Strictly Increasing. To maximize the sum, we need to find the best "peak" (p) and "valley" (q) that connect these three segments. Since the constraints are N≤10 
+5
+ , an O(n) or O(nlogn) approach is required.
+
+Approach
+The problem can be solved by identifying every possible "middle" decreasing segment and then greedily expanding to the left and right to capture the maximum possible sum from the flanking increasing segments.
+
+Identify the Core: We iterate through the array to find every strictly decreasing segment [p,q]. This segment represents the "bridge" of the Trionic array.
+
+Left Expansion (Strictly Increasing): From index p, we look backward to find the longest strictly increasing sequence ending at p. We don't just take the whole sequence; we keep track of the prefix sums to find the maximum sum possible within that increasing stretch.
+
+Right Expansion (Strictly Increasing): From index q, we look forward to find the longest strictly increasing sequence starting at q. Similar to the left, we find the maximum prefix sum available in this direction.
+
+Validating Trionic Conditions: A valid subarray must satisfy l<p<q<r. This means:
+
+The left increasing segment must have at least one element before p.
+The middle decreasing segment must have at least one element between p and q.
+The right increasing segment must have at least one element after q.
+Global Maximum: We sum the maximums found for the left, middle, and right segments and update our global result.
+Complexity
+Time complexity: O(n) — Although we have loops to expand left and right, each element is processed a constant number of times because we can skip the outer loop index i to the end of the current segment.
+Space complexity: O(1) — We only store a few variables for sums and pointers, as the calculations are done on the fly.
+ */
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxSumTrionic = function(nums) {
+    const n = nums.length;
+    let res = -Infinity;
+
+    for (let i = 1; i < n - 2; ) {
+        let a = i, b = i;
+        let net = BigInt(nums[a]);
+
+        // Middle decreasing part
+        while (b + 1 < n && nums[b + 1] < nums[b]) {
+            net += BigInt(nums[++b]);
+        }
+        if (b === a) { i++; continue; }
+
+        let c = b;
+        let left = 0n, right = 0n;
+        let lx = -BigInt(1e16), rx = -BigInt(1e16);
+
+        // Left increasing part
+        while (a - 1 >= 0 && nums[a - 1] < nums[a]) {
+            left += BigInt(nums[--a]);
+            if (left > lx) lx = left;
+        }
+        if (a === i) { i++; continue; }
+
+        // Right increasing part
+        while (b + 1 < n && nums[b + 1] > nums[b]) {
+            right += BigInt(nums[++b]);
+            if (right > rx) rx = right;
+        }
+        if (b === c) { i++; continue; }
+
+        let currentSum = Number(lx + rx + net);
+        if (currentSum > res) res = currentSum;
+        
+        i = b;
+    }
+    return res;
+};
