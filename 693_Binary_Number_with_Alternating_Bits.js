@@ -26,7 +26,11 @@ Constraints:
 1 <= n <= 231 - 1
  */
 
-function hasAlternatingBits(n) {
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var hasAlternatingBits = function(n) {
     let prev = n & 1;
     while ((n >>>= 1) > 0) {
         const rightBit = n & 1;
@@ -34,4 +38,4 @@ function hasAlternatingBits(n) {
         prev = rightBit;
     }
     return true;
-}
+};
