@@ -38,3 +38,22 @@ var countBinarySubstrings = function (s) {
     else (ans += Math.min(curr, prev)), (prev = curr), (curr = 1);
   return ans + Math.min(curr, prev);
 };
+
+
+/**
+ * Another approach
+ */
+
+var countBinarySubstrings = function(s) {
+  let prev = 0, curr = 1, res = 0;
+    for (let i = 1; i < s.length; i++) {
+        if (s[i] === s[i - 1]) {
+            curr++;
+        } else {
+            prev = curr;
+            curr = 1;
+        }
+        if (prev >= curr) res++;
+    }
+    return res;
+}
