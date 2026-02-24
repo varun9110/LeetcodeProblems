@@ -69,3 +69,14 @@ var sumRootToLeaf = function (root) {
   DFS(root);
   return total
 };
+
+/**
+ * Refined approach
+ */
+
+var sumRootToLeaf = function (root, pathVal = 0) {
+    if (root == null) return 0;
+    pathVal = pathVal * 2 + root.val;
+    if (root.left == null && root.right == null) return pathVal;
+    return sumRootToLeaf(root.right, pathVal) + sumRootToLeaf(root.left, pathVal);
+};
